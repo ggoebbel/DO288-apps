@@ -1,0 +1,218 @@
+sudo podman ps
+sudo podman ps stop 9f
+sudo podman stop 9f
+-
+sudo su -
+lab container-create start
+echo $PS2
+sudo podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -d rhscl/mysql-57-rhel7:5.7-3.14
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 65b6405a81b registry.access.redhat.com/rhscl/mysql-57-rhel7:5.7-3.14 mysql-basic
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 
+sudo podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhscl/mysql-57-rhel7:5.7-3.14
+sudo podman rm mysql-basic
+udo podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhscl/mysql-57-rhel7:5.7-3.14
+sudo podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhscl/mysql-57-rhel7:5.7-3.14
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 65b6405a81b registry.access.redhat.com/rhscl/mysql-57-rhel7:5.7-3.14 mysql-basic
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}"
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}"4112cfac824b registry.access.redhat.com/rhscl/mysql-57-rhel7:5.7-3.14 mysql-basic
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 4112cfac824b registry.access.redhat.com/rhscl/mysql-57-rhel7:5.7-3.14 mysql-basic
+sudo podman ps --format "{{.ID}} {{.IMAGE}} {{.NAMES}}" 
+sudo podman ps --format "{{.ID}} {{.Image}} {{.Names}}" 
+sudo podman exec -it mysql-basic /bin/bash
+history
+clear
+lab manage-lifecycle start
+sudo podman run --name mysql-dbrhscl/mysql-57-rhel7
+sudo podman run --name mysql-db rhscl/mysql-57-rhel7
+MYSQL_USER (regex: '^-zA-Z0-9_$')
+MYSQL_USER (regex: `^-zA-Z0-9_$`)
+sudo podman run --name mysql-d -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+sudo podman status
+sudo podman ps
+sudo podman ps -a
+sudo podman start 9f
+sudo podman ps
+sudo podman rm -f 41
+sudo podman rm -f ab
+sudo podman ps -a
+sudo podman ps
+sudo podman rm -f 9f
+sudo podman ps
+sudo podman run --name mysql -d -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+sudo podman ps
+sudo podman inspect -f '{{ .NetworkSettings.IPAddress }}' mysql
+mysql -uuser1 -h 10.88.0.7 -p items
+sudo podman run --name mysql-2 -it rhscl/mysql-57-rhel7 /bin/bash
+sudo podman ps -a --format="table {{.ID}} {{.Names}} {{.Status}}" 
+sudo podman exec mysql /bin/bash \-c 'mysql -uuser1 -p -e "select * from items.Projects;"'
+lab manage-lifecycle finish
+sudo podman ps -a
+sudo podman rm -fa
+sudo podman rmi -a
+la manager-storage start
+lab manager-storage start
+lab manage-storage start
+sudp mkdir -pv /var/local/mysql
+sudo mkdir -pv /var/local/mysql
+sudo semanage fcontext -a -t container_file_t '/var/local/mysql(/.*)?'
+sudo restorecon -R /var/local/mysql
+ls -dZ /var/local/mysql
+sudo chown -Rv 27:27 /var/local/mysql
+sudo podman pull rhscl/mysql-57-rhel7
+sudo podman run --name persist-db -d -v /var/local/mysql:/var/lib/mysql/data -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASWWORD=mypa55 rhscl/mysql-57-rhel7
+sudo podman ps --format="table {{.ID}} {{.Names}} {{ .Status}}"
+ls -l /var/local/mysql
+lab manage-storage finish
+sudo podman ps
+lab manage-networking start
+sudo podman run --name mysqldb-port -d -v /var/local/mysql:/var/lib/mysql/data -p 13306:3306 -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORT=r00tpa55 
+rhsecl/mysql-57-rhel7 
+sudo podman run --name mysqldb-port -d -v /var/local/mysql:/var/lib/mysql/data -p 13306:3306 -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+sudo podman ps
+mysql -uuser1 -h 127.0.0.1 .pmypa55 -P13306 items < /home/student/D0180/labs/manage-networking/db.sql
+mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items < /home/student/D0180/labs/manage-networking/db.sql
+mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items < /home/student/DO180/labs/manage-networking/db.sql
+mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "SELECT * from Item"
+sudo podman exec -it mysqldb-port /bin/bash
+sudo podman exec -it mysqldb-port /opt/rh/rh-mysql57/root/usr/bin/mysql -uroot items -e "SELECT * FROM Item"
+lab manage-networking finish
+history
+mysql -uuser1 -pmypa55 --protocol tcp -h localhost
+lab image-operations start
+sudo podman login quay.io
+sudo podman run -d --name official-httpd -p 8180:80 redhattraining/httpd-parent
+sudo podman exec -it official-httpd /bin/bash
+la configure
+curl 
+lab-configure
+curl 127.0.0.1:8180/do180.html
+sudo podman inspect -f  "{{range .Mounts}}{{println .Destination}}{{end}}" official-httpd
+sudo podman diff official-httpd
+sudo podman stop official-httpd
+sudo podman commit -a 'Guenter Goebbel' official-httpd do180-custom-httpd
+git clone https://github.com/ggoebbel//DO288-apps
+cd DO288-apps
+git-status
+git status
+head README.md
+git clone https://github.com/ggoebbel/D0180-apps
+git clone https://github.com/ggoebbel/DO180-apps
+cd DO180-apps
+git status
+sudo podman commit -a 'Guenter Goebbel' official-httpd do180-custom-httpd
+sudo podman images
+cd
+sudo podman images
+source /usr/local/etc/ocp4.config
+sudompodman tag do180-custom-httpd quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+sudo podman tag do180-custom-httpd quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+sudo podman images
+sudo podman push quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+sudo podman pull quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+sudo podman run -d --name test-httpd -p 8280:80 do180-custom-httpd:v1.0
+curl httpd://localhost:8280/do180.html
+curl http://localhost:8280/do180.html
+lab image-operations finish
+ls -altr
+ls -altr DO288-apps/
+lab dockerfile-create start
+vim /home/student/DO180/labs/dockerfile-create/Dockerfile
+cd /home/student/DO180/labs/dockerfile-create
+ls -altr
+sudo podman build --layers=false -t do180/apache
+sudo podman build --layers=false -t do180/apache .
+sudo podman images
+sudo podman run --name lab-apache -d -p 10080:80 do180/apache
+sudo podman ps
+curl localhost:10080
+lab dockerfile-create finish
+oc get nodes
+cd
+printenv
+oc get svc
+clear
+lab openshift-resources start
+source /usr/local/etc/ocp4.config 
+oc login -u ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+oc login -u ${RHT_OCP4_DEV_USER} -p \ ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+oc login -u ${RHT_OCP4_DEV_USER} -p ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+oc new-project ${RHT_OCP4_DEV_USER}-mysql-openshift 
+oc new-app --as-deployment-config --docker-image=registry.access.redhat.com/rhscl/mysql-75-rhel7:latest --name=mysql-openshift -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=testdb -e MYSQL_ROOT_PASSWORD=r00tpa55
+oc new-app --as-deployment-config --docker-image=registry.access.redhat.com/rhscl/mysql-57-rhel7:latest --name=mysql-openshift -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=testdb -e MYSQL_ROOT_PASSWORD=r00tpa55
+oc status
+oc get pods -o=wide
+oc describe pod mysql-openshift-1-glqrp
+oc describe pod mysql-openshift-1-bss5m
+oc get svc
+oc describe service mysql-openshift 
+oc describe dc mysql-openshift 
+oc port-forward mysql-openshift-1-
+oc get routes 
+oc port-forward mysql-openshift-1-bss5m 3306:3306
+oc delete project ${RHT_OCP4_DEV_USER} -mysql-openshift
+oc delete project ${RHT_OCP4_DEV_USER}-mysql-openshift
+lab openshift-resources finish
+history
+clear
+lab docker-build start
+cd DO288-apps/
+ls
+git status
+mv DO180-apps/ ..
+cd ..
+ls -l
+lab docker-build start
+ls -altr
+cd DO288-apps/
+git checkout master
+git checkout -b docker-build
+git push -u origin docker-build 
+cat ubi-echo dockerfile
+cat ubi-echo/dockerfile
+ls -altr
+cd ubi-echo/
+ls -altr
+cat Dockerfile 
+source /usr/local/etc/ocp4.config 
+cat /usr/local/etc/ocp4.config
+# oc login -u ggoebbel -p ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API} 
+oc login -u ggoebbel -p ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+oc new-project ggoebbel-docker-build 
+oc new-project ggoebbel-docker-build
+oc new-app --as-deployment-config --name echo https://github.com/ggoebbel/DO288-apps#docker-build --context-dir ubi-echo
+oc logs -f bc/echo
+oc status
+oc get pod
+oc logs echo-1-8bvpz
+oc logs echo-1-8bvpz | tail -n 3
+oc describe bc echo
+oc describe is echo
+oc describe dc echo
+oc get pods
+historz
+history
+cd ~/DO288-apps/ubi-echo/
+ls -altr
+view Dockerfile 
+git commit -a -m 'Add a counter'
+vim Dockerfile 
+git commit -a -m 'Add a counter'
+git push
+cd ~
+oc start-build echo
+oc logs -f bc/echo
+oc status 
+oc get pod
+oc logs echo-2-57hvl  head -n 3
+oc logs echo-2-57hvl | head -n 3
+oc describe is echo
+oc delete all -l app=echo
+oc get all
+la docker-build finish
+lab docker-buid finish 
+lab docker-build finish 
+history
+history --help
+man history
+history -w my-history
